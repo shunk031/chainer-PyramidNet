@@ -94,7 +94,7 @@ class BottleNeckB(chainer.Chain):
             xp = chainer.cuda.get_array_module(shortcut)
             pad = chainer.Variable(
                 xp.zeros((batch_size, residual_channel - shortcut_channel, featuremap_size[0], featuremap_size[1]), dtype=xp.float32))
-            h = F.concat((shortcut, pad), axis=1)
+            h += F.concat((shortcut, pad), axis=1)
         else:
             h += shortcut
 
